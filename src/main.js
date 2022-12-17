@@ -1,11 +1,21 @@
+import 'vuetify/styles' // Global CSS has to be imported
 import { createApp } from 'vue'
+import { createVuetify } from 'vuetify'
 import App from './App.vue'
 import router from './router'
+import store from './store'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-import './assets/main.css'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
-const app = createApp(App)
-
-app.use(router)
-
+import '@/assets/main.scss'
+const app = createApp(App).use(store)
+const vuetify = createVuetify({
+    components,
+    directives,
+})
+app.use(VueAxios, axios).use(vuetify).use(router)
+app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
 app.mount('#app')
