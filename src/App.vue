@@ -9,7 +9,7 @@ import Overview from './pages/Overview.vue'
     <Header />
   </header>
   <main class="page-event-list">
-    <Overview />
+    <RouterView/>
   </main>
   <footer>
     <Footer />
