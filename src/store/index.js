@@ -1,16 +1,16 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-
+import { useRoute } from 'vue-router'
 export default createStore({
   state: {
     events: []
   },
   getters: {
-    getEvent: (state) => (id) => {
-      const event = state.events.find(event => event.id === id)
+    getEvent: (state) => {
+      const event = state.events.find(event => event.id === useRoute().params.event)
       return event
     },
-    getAllEvents: (state) => {
+    getAllEvents (state) {
       return state.events
     }
   },
@@ -21,13 +21,11 @@ export default createStore({
   },
   actions: {
     recallEvents({ state, commit }) {
-      if (state.events.length === 0) {
         axios.get('http://127.0.0.1:8010/proxy')
           .then(response => {
             commit('SET_EVENTS', response.data)
           })
-      }
-      console.log(state.events.length)
+      
     }
   }
 })

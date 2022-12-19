@@ -1,26 +1,18 @@
 <script setup>
 import EventCard from '../components/EventCard.vue'
-import axios from 'axios'
-import { ref } from 'vue'
+import { mapGetters } from 'vuex'
 </script>
 <script>
 export default {
   components: [EventCard],
-  data() {
-    return {
-      events: ref(0)
-    }
-  },
   mounted() {
       this.$store.dispatch('recallEvents')
-      this.events = this.$store.getters.getAllEvents
-    // axios.get('http://127.0.0.1:8010/proxy')
-    //   .then(response => {
-    //     this.events = response.data
-    //     this.$store.commit('SET_EVENTS', response.data)
-    // })
   },
-
+  computed: {
+    ...mapGetters({
+      events: 'getAllEvents'
+    })
+  }
 }
 </script>
 <template>
@@ -44,8 +36,16 @@ export default {
   }
   &__card {
     padding: 0 8px;
-    flex: 0 0 33.33333333333333%;
-    max-width: 33.33333333333333%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    @media screen and (min-width: 768px) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    @media screen and (min-width: 992px) {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
     display: flex;
     align-items: stretch;
   }

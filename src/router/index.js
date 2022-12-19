@@ -13,7 +13,8 @@ const router = createRouter({
     {
       path: '/product-details/:event',
       name: 'details',
-      component: ProductDetails
+      component: ProductDetails,
+      props: { ProductDetails: true, Overview: false }
     }
   ]
 })

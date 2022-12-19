@@ -1,26 +1,14 @@
 <script setup>
 // import { mdiClockTimeFourOutline } from '@mdi/js';
 // import { mdiCalendarBlank } from '@mdi/js';
+import Times from '../components/Times.vue'
+
 const props = defineProps({
   event: {
     type: Object,
     required: true
   }
-  
 })
-function addZero(minutes) {
-  if (minutes < 10) {minutes = "0" + minutes}
-  return minutes;
-}
-function getDate(data) {
-  const date = data.slice(0, 10)
-  return date
-}
-function getTime(data) {
-  const hours = addZero(new Date(data).getHours())
-  let minutes = addZero(new Date(data).getMinutes())
-  return hours+':'+minutes
-}
 </script>
 <template>
   <v-card data-cy="Card_card" class="card">
@@ -40,31 +28,21 @@ function getTime(data) {
         <v-card-title class="card__title">
           {{event.title}}
         </v-card-title>
-        <v-btn variant="text">
-          Explore
-        </v-btn>
+        <button class="btn btn--primary">
+          <span v-if="event.soldout">Not Available</span>
+          <span v-else>Ticket</span>
+        </button>
       </div>
       <div class="card__details">
-        <!-- <span class="icon-text"><i aria-hidden="true" class="eventim-icons icon">event</i> 13-01-2023</span> -->
-
-        <span class="icon-text"><v-icon icon="mdiCalendarBlank"></v-icon>{{ getDate(event.start)}}</span>
-        <span class="icon-text"><v-icon icon="mdiClockTimeFourOutline"></v-icon>{{ getTime(event.start)}}</span>
+        <Times 
+          :date="event.start"
+          space
+        />
       </div>
       <div class="card__details">
         <span class="icon-text"><v-icon icon="F00EE"></v-icon>{{event.venue.name}}, {{event.venue.city}}</span>
       </div>
     </div>
-
-  
-
-    <v-card-actions>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-      ></v-btn>
-    </v-card-actions>
-
   </v-card>
 </template>
 
@@ -105,8 +83,7 @@ function getTime(data) {
   }
 
   &__details {
-    opacity: .65;
+    color: var(--soft);
   }
-
 }
 </style> 

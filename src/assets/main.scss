@@ -1,1 +1,54 @@
 @import './_variables.scss';
+
+.border-1 {
+  border: 1px solid rgba(30, 30, 30, 0.2);
+}
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  align-items: center;
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  vertical-align: middle;
+  font-size: 15px;
+  font-weight: 500;
+  justify-content: center;
+  margin: 6px 8px;
+  min-width: 77px;
+  outline: 0;
+  text-transform: none;
+  text-decoration: none;
+  transition: .3s cubic-bezier(.25,.8,.5,1),color 1ms;
+  position: relative;
+  vertical-align: middle;
+  user-select: none;
+
+  &--large {
+    font-size: 18px;
+    height: 50px;
+  }
+  &--block {
+    display: block;
+    margin: 6px 0;
+    width: 100%;
+  }
+  &--primary {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+}
+
+h1{
+  font-weight: 400;
+  margin: 4px 0;
+  line-height: 34px;
+  font-size: 30px;
+}
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
