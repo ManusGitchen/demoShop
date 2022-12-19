@@ -12,12 +12,15 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8010/proxy')
-        .then(response =>{
-          console.log(response.data)
-          this.events = response.data
-        })
-  }
+      this.$store.dispatch('recallEvents')
+      this.events = this.$store.getters.getAllEvents
+    // axios.get('http://127.0.0.1:8010/proxy')
+    //   .then(response => {
+    //     this.events = response.data
+    //     this.$store.commit('SET_EVENTS', response.data)
+    // })
+  },
+
 }
 </script>
 <template>

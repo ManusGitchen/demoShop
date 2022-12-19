@@ -2,9 +2,6 @@
 import ImageHeader from '../components/ImageHeader.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import axios from 'axios'
-// const route = useRoute()
-// console.log(route.params)
 </script>
 <script>
 export default {
@@ -12,25 +9,24 @@ export default {
   data() {
     return {
       route: useRoute(),
-      selectedEvent: ref(0),
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8010/proxy')
-        .then(response =>{
-          this.selectedEvent = response.data.find(event => event.id === this.route.params.event)
-        })
+      this.$store.dispatch('recallEvents')
+      console.log(this.$store.state.events.find(event => event.id === '634fda7c6ddb580876fe8e94'))
+
   },
-  computed:{
-    createBGImage(){
-      return "'https://www.eventim-light.com/dk/api/image/'"+this.selectedEvent.image.id+"'/shop_preview/webp'"
+  computed: {
+    eventImage(){
+      return this.$store.getters.getEvent(this.route.params.event)
     }
+    
   }
 }
 </script>
 <template>
   <div class="event-page">
-    <ImageHeader :event="selectedEvent"/>
+    <ImageHeader image="https://www.eventim-light.com/dk/api/image/634fda206ddb580876fe8e92/shop_cover@2x/webp"/>
     <div class="page-event__container">
       <div class="page-event__title">
         <div class="page-event__header">

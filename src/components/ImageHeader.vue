@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-  event: {
-    type: Object,
+  image: {
+    type: String,
     required: true
   }
 })
@@ -13,7 +13,7 @@ const props = defineProps({
           <div class="aspect-ratio">
             <v-img
               data-cy="Card-Media_image"
-              :src="'https://www.eventim-light.com/dk/api/image/'+event.image.id+'/shop_preview/webp'"
+              :src="image"
               class="card-image lazy"
               cover
               lazy="loaded"
@@ -21,7 +21,7 @@ const props = defineProps({
           </div>
         </div>
         <div class="header-image__blur-container">
-          <!-- <div class="header-image__blur-image lazy-bg" v-bind:style="{createBGImage}"></div> -->
+          <div class="header-image__blur-image lazy-bg" v-bind:style="{ 'background-image': 'url(' + image + ')' }"></div>
         </div>
       </div>
     </div>
