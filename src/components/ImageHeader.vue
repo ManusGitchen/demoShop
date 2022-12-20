@@ -33,13 +33,10 @@ const props = defineProps({
     position: relative;
   }
   &__image-container {
-    padding-top: 20px;
+    padding: 20px 0 0;
     width: auto;
     max-width: 700px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 0;
-    padding-right: 0;
+    margin: auto;
   }
   &__blur-container {
     display: block;
@@ -66,5 +63,4 @@ const props = defineProps({
     filter: blur(25px);
   }
 }
-
 </style>

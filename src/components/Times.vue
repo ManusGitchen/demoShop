@@ -1,6 +1,4 @@
 <script setup>
-// import { mdiClockTimeFourOutline } from '@mdi/js';
-// import { mdiCalendarBlank } from '@mdi/js';
 const props = defineProps({
   title: {
     type: String
@@ -48,5 +46,7 @@ function getTime(data) {
 .nowrap {
   margin-right: .5rem;
 }
-
+.icon-text {
+  margin-left: 1rem;
+}
 </style>

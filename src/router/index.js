@@ -11,6 +11,7 @@ const router = createRouter({
       component: Overview
     },
     {
+      // Eventseite mit Name Mode (Parameter in URL) Backend History Mode Einstellungen nötig
       path: '/product-details/:event',
       name: 'details',
       component: ProductDetails,

@@ -1,9 +1,11 @@
 @import './_variables.scss';
 
+//Globale Styles
 .border-1 {
   border: 1px solid rgba(30, 30, 30, 0.2);
 }
 
+// Button alternativ als Mixin für verschiedene Varianten
 .btn {
   border: none;
   border-radius: 2px;
@@ -22,15 +24,17 @@
   text-transform: none;
   text-decoration: none;
   text-align: center;
-  transition: .3s cubic-bezier(.25,.8,.5,1),color 1ms;
+  transition: .3s cubic-bezier(.25, .8, .5, 1), color 1ms;
   position: relative;
   vertical-align: middle;
   user-select: none;
   white-space: nowrap;
+
   &:focus {
     outline: none;
     box-shadow: 0 0 0 1px var(--primary);
   }
+
   &:hover {
     background-color: var(--primary-light);
   }
@@ -39,30 +43,33 @@
     font-size: 18px;
     height: 50px;
   }
+
   &--block {
     display: block;
     margin: 6px 0;
     width: 100%;
   }
+
   &--primary {
     background-color: var(--primary);
     color: var(--white);
   }
 }
 
-h1{
+h1 {
   margin: 4px 0;
   font-weight: 400;
   line-height: 24px;
   font-size: 24px;
-  @media screen and (min-width: 768px) {   
+
+  @media screen and (min-width: 768px) {
     line-height: 34px;
     font-size: 30px;
   }
 }
+
 h2 {
   font-size: 18px;
   font-weight: normal;
   margin-bottom: 8px;
 }
-

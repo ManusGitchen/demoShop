@@ -40,7 +40,8 @@ const props = defineProps({
       </div>
       <div class="card__details card__location">
         <span class="icon-text">
-          <font-awesome-icon icon="fa-solid fa-location-dot" />{{event.venue.name}}, {{event.venue.city}}</span>
+          <font-awesome-icon icon="fa-solid fa-location-dot" />{{event.venue.name}}, {{event.venue.city}}
+        </span>
       </div>
     </div>
   </v-card>
