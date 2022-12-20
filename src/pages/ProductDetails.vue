@@ -4,14 +4,19 @@ import Times from '../components/Times.vue'
 import TicketSelector from '../components/TicketSelector.vue';
 import { mapGetters } from 'vuex'
 
+// Zweistellige Minuten
 function addZero(minutes) {
   if (minutes < 10) {minutes = "0" + minutes}
   return minutes;
 }
+
+// Datum herausschneiden
 function getDate(data) {
   const date = data.slice(0, 10)
   return date
 }
+
+// Zeit herausschneiden
 function getTime(data) {
   const hours = addZero(new Date(data).getHours())
   let minutes = addZero(new Date(data).getMinutes())
@@ -96,11 +101,10 @@ export default {
   &__container {
     width: auto;
     max-width: 700px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: auto;
+    margin-bottom: 16px;
     padding-left: 0;
     padding-right: 0;
-    margin-bottom: 16px;
   }
   &__header{
     height: auto;
