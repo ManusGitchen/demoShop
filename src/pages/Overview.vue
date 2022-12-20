@@ -16,15 +16,20 @@ export default {
 }
 </script>
 <template>
-  <div class="page-event-list__cards">
-    <div class="page-event-list__card" v-for="event in events">
-      <EventCard :event="event"/>
+  <div class="page-event-list">
+    <div class="page-event-list__cards">
+      <div class="page-event-list__card" v-for="event in events">
+        <EventCard :event="event"/>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .page-event-list {
+  width: 100%;
+  max-width: 1171px;
+  margin: auto;
   &__cards {
     padding: 0 4px 0 3px;
     display: flex;

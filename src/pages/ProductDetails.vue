@@ -2,8 +2,6 @@
 import ImageHeader from '../components/ImageHeader.vue'
 import Times from '../components/Times.vue'
 import TicketSelector from '../components/TicketSelector.vue';
-
-
 import { mapGetters } from 'vuex'
 
 function addZero(minutes) {
@@ -97,7 +95,7 @@ export default {
 
   &__container {
     width: auto;
-    width: 700px;
+    max-width: 700px;
     margin-right: auto;
     margin-left: auto;
     padding-left: 0;
@@ -115,17 +113,16 @@ export default {
   }
   &__title {
     margin: 8px 0 24px 0;
-    & > h1 {
-      margin: 4px 0;
-      line-height: 34px;
-      font-size: 30px;
-    }
   }
   &__facts {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: stretch;
     margin-bottom: 16px;
+    @media screen and (min-width: 600px) {
+      flex-direction: row;
+    }
     & > div {
       flex: 1 1 50%;
       padding: 8px 12px;

@@ -22,7 +22,7 @@ const props = defineProps({
       <div class="ticket-selector__fees">
         The tickets are immediately available once the payment data has been sent for downloading and will also be sent to you by e-mail.
       </div>
-      <button class="btn--primary btn-submit btn--large btn--block">Add to shopping cart</button>
+      <button class="btn btn--primary btn-submit btn--large btn--block">Add to shopping cart</button>
     </div>
   </div>
 </template>
@@ -39,10 +39,12 @@ const props = defineProps({
     align-items: center;
   }
   &__summary {
-    flex: 0 0 50%;
-    max-width: 50%;
-    margin-left: 50%;
     margin-top: 18px;
+    @media screen and (min-width: 768px) {
+      flex: 0 0 50%;
+      max-width: 50%;
+      margin-left: 50%;
+    }
   }
   &__text{
     font-size: 18px;

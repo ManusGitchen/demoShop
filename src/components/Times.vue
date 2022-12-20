@@ -34,18 +34,19 @@ function getTime(data) {
   <div :class="{'icon-text': space}">
     <div v-if="timePrefix" class="time__prefix">{{timePrefix}}</div> 
     <span class="nowrap">
-      <!-- <i aria-hidden="true" class="eventim-icons icon">event</i> -->
+      <font-awesome-icon icon="fa-solid fa-calendar-days" />
       {{ getDate(date)}}
     </span>
-    <span class="nowrap">
-      <!-- <i aria-hidden="true" class="eventim-icons icon">access_time</i> -->
+    <span class="nowrap icon-text">
+      <font-awesome-icon icon="fa-solid fa-clock" />
       {{ getTime(date)}}
     </span>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.icon-text {
-  padding: 0 1rem;
+.nowrap {
+  margin-right: .5rem;
 }
+
 </style>

@@ -1,8 +1,5 @@
 <script setup>
-// import { mdiClockTimeFourOutline } from '@mdi/js';
-// import { mdiCalendarBlank } from '@mdi/js';
 import Times from '../components/Times.vue'
-
 const props = defineProps({
   event: {
     type: Object,
@@ -12,26 +9,28 @@ const props = defineProps({
 </script>
 <template>
   <v-card data-cy="Card_card" class="card">
-    <div class="card__media">
-      <router-link data-cy="Card-Media_link" :to="{ name: 'details', params: { event: event.id }}">
-        <v-img
-          data-cy="Card-Media_image"
-          :src="'https://www.eventim-light.com/dk/api/image/'+event.image.id+'/shop_preview/webp'"
-          class="card-image lazy"
-          cover
-          lazy="loaded"
-        />
-      </router-link>
+    <div class="card__media-wrapper">
+      <div class="card__media">
+        <router-link :to="{ name: 'details', params: { event: event.id }}" class="card__media-link">
+          <v-img
+            data-cy="Card-Media_image"
+            :src="'https://www.eventim-light.com/dk/api/image/'+event.image.id+'/shop_preview/webp'"
+            class="card-image lazy"
+            cover
+            lazy="loaded"
+          />
+        </router-link>
+      </div>
     </div>
     <div class="card__content">
       <div class="card__title-wrapper">
         <v-card-title class="card__title">
           {{event.title}}
         </v-card-title>
-        <button class="btn btn--primary">
+        <router-link :to="{ name: 'details', params: { event: event.id }}" class="btn btn--primary">
           <span v-if="event.soldout">Not Available</span>
           <span v-else>Ticket</span>
-        </button>
+        </router-link>
       </div>
       <div class="card__details">
         <Times 
@@ -39,8 +38,9 @@ const props = defineProps({
           space
         />
       </div>
-      <div class="card__details">
-        <span class="icon-text"><v-icon icon="F00EE"></v-icon>{{event.venue.name}}, {{event.venue.city}}</span>
+      <div class="card__details card__location">
+        <span class="icon-text">
+          <font-awesome-icon icon="fa-solid fa-location-dot" />{{event.venue.name}}, {{event.venue.city}}</span>
       </div>
     </div>
   </v-card>
@@ -57,9 +57,15 @@ const props = defineProps({
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 20px;
+  padding-bottom: 1rem;
 
-  &__media {
+  &__media:hover{
+      transform: scale(1.5);
+    
+  }
+  &__media-wrapper {
     margin-bottom: 12px;
+    overflow: hidden;
   }
 
   &__conent {
@@ -78,12 +84,25 @@ const props = defineProps({
     display: flex;
     flex: auto;
     white-space: normal;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 24px !important;
+    @media screen and (min-width: 768px) {
+      font-size: 24px;
+      line-height: 28px;
+    }
   }
 
   &__details {
     color: var(--soft);
+  }
+}
+.icon-text {
+  padding: 0 1rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: baseline;
+  & svg {
+    margin-right: .25rem;
   }
 }
 </style> 
